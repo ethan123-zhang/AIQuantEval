@@ -1,0 +1,4 @@
+﻿ Write-Output "== hf api tree =="; curl.exe -s -m 15 "https://huggingface.co/api/datasets/cocodataset/coco-2017/tree/ma
+in" ; Write-Output "`n== hf-mirror root =="; curl.exe -s -m 15 -o NUL -w "hf-mirror_code=%{http_code} time=%{time_total
+}" "https://hf-mirror.com" ; Write-Output "`n== hf-mirror api tree =="; curl.exe -s -m 15 "https://hf-mirror.com/api/da
+tasets/cocodataset/coco-2017/tree/main" 

@@ -1,0 +1,9 @@
+52.216.27.88 fail: SSLCertVerificationError [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, c
+16.15.253.45 fail: SSLCertVerificationError [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, c
+52.217.118.218 fail: SSLCertVerificationError [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, c
+16.15.247.13 fail: SSLCertVerificationError [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, c
+16.15.236.117 fail: SSLCertVerificationError [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, c
+54.231.131.82 fail: SSLCertVerificationError [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, c
+54.231.170.194 fail: SSLCertVerificationError [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, c
+HTTP http://images.cocodataset.org/val2017/000000000139.jpg -> 200 161811 image/jpeg
+HTTP http://images.cocodataset.org/annotations/instances_val2017.json -> fail: <HTTPError 404: 'Not Found'>

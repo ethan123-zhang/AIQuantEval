@@ -1,0 +1,28 @@
+﻿curl.exe : * Host images.cocodataset.org:443 was resolved.
+所在位置 行:1 字符: 1
++ curl.exe -v -o NUL https://images.cocodataset.org/annotations/instanc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (* Host images.c...3 was resolved.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+* IPv6: (none)
+* IPv4: 16.15.230.214, 52.217.88.152, 16.15.244.117
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 16.15.230.214:443...
+* Connected to images.cocodataset.org (16.15.230.214) port 443
+* schannel: disabled automatic use of client certificate
+* ALPN: curl offers http/1.1
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* schannel: SNI or certificate check fail
+ed: SEC_E_WRONG_PRINCIPAL (0x80090322) - Ŀ����Ҫ���Ʋ���ȷ��
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* closing connection #0
+curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - Ŀ����Ҫ���Ʋ���ȷ��
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.

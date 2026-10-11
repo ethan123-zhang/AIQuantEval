@@ -1,0 +1,5 @@
+local resolve: 16.15.230.214
+TLS fail: SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'images.cocodataset.org'. (_ssl.c:1032)")
+https://www.baidu.com -> 200 29506
+https://github.com -> 200 None
+https://images.cocodataset.org/val2017/000000000139.jpg -> fail: URLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'images.cocodataset.org'. (_ssl.c:1032)"))
