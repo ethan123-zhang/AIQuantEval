@@ -68,6 +68,33 @@ E:\AIQuantEval\
 - 因此这些文件**不会被自动加载**，只在人或 agent 主动读取时生效。
 - 若日后 DSH 提供了自动记忆功能，应把本库内容迁移过去，而不是两套并存。
 
+## 📤 推送纪律（每次做完都要执行）
+
+**本库任何改动完成后，必须立即推送 GitHub**，不要攒着、不要留半成品。
+
+```bat
+E:\AIQuantEval\push_ai.bat
+```
+
+其内容等价于：
+
+```bat
+git add .
+git commit -m "update notes"
+git push origin main
+```
+
+**要点**：
+
+- 推送是**收尾动作**，不推送就等于没做完。
+- 改动落在两个库时**要各自推送**：
+  - 知识改动 → 跑 `E:\Document\Ethan'vault\aiVault\push_ai.bat`
+  - 进度改动 → 跑 `E:\AIQuantEval\push_ai.bat`
+- `push_ai.bat` 结尾有 `pause`，**在自动化/非交互环境下会卡住**；
+  此时改用等效的三条 git 命令。
+- ⚠️ 本库的 `git add .` 会连带未跟踪文件（如 `.onnx`/图集等大文件）。
+  若出现这类文件，先补 `.gitignore`，别直接把大文件推上去。
+
 ## 自我检查（每次写入后）
 
 - [ ] 索引里没有正文？
@@ -76,3 +103,4 @@ E:\AIQuantEval\
 - [ ] 有没有留下与旧结论矛盾的段落？
 - [ ] 有没有抄 git/README 已有的易得内容？
 - [ ] 有没有写入任何秘密？
+- [ ] **改动是否已 `push_ai` 推送？**
