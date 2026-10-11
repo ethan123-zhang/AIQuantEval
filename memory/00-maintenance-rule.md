@@ -64,38 +64,21 @@ E:\AIQuantEval\
    `push_ai`。**本库的规则不能替代它**，往 aiVault 写入时以 `AGENTS.md` 为准。
 4. 本库与 aiVault **各自独立 git**，推送互不影响。
 
-### 📂 aiVault 内部该落哪个目录（内容按类型分流）
+### 📂 aiVault 内部该落哪个目录
 
-写知识前先按下表选目录。**权威定义在 `aiVault/prompts/ingest.md` §4 的模板**，
-本表只是速查；冲突时以 ingest.md 为准。
+> **完整分流表与判据见 aiVault 通用约定页**（避免两处维护）：
+> `aiVault/wiki/concepts/Dual_Store_Knowledge_vs_Project_Memory.md` §4
+> 权威模板在 `aiVault/prompts/ingest.md` §4。
 
-| 内容类型 | 落到 | 格式 | 模板 |
-| :--- | :--- | :--- | :--- |
-| 芯片 / 框架 / 工具（含可运行代码、编译命令） | `wiki/entities/` | `.qmd` | ingest.md §4.2 |
-| 原理 / 算法 / 机制（纯文字推导） | `wiki/concepts/` | `.md` | §4.3 |
-| **多方案实测对比**（精度/速度/体积数据表） | `wiki/comparisons/` | `.qmd` | §4.4 |
-| 领域全景 / 技术路线 / 专题 MOC | `wiki/overview/` | `.md` | §4.5 |
-| 原始来源快照（抓取物、**含本地实验记录**） | `raw/YYYYMMDD-来源/` | `.md` | §4.1 |
-| 全局索引 / 时间线日志 | `INDEX.md` / `LOG.md`（根目录） | 固定 | AGENTS.md §6 |
+一句话记忆：**机理→`concepts/`、选型对比→`comparisons/`、工具用法→`entities/`、
+数据溯源→`raw/`**；一次分析产出多种就**分开落不同目录**。
 
-**本项目的落点约定**（沿用已建页面）：
+**本项目已建的落点**：
 
 - 量化机理与修复方案 → `wiki/concepts/YOLO_Head_Quantization_Collapse.md`
 - 量化策略选型对比 → `wiki/comparisons/RKNN_Quantization_Strategy_vs.qmd`
 - RKNN 工具链限制 → `wiki/entities/RKNN_Toolkit2.qmd`
 - 实验原始数据 → `raw/20261011-local/yolov8n_rknn_int8_collapse.md`
-
-**分流判据（易混）**：
-
-- 「**为什么**会这样」（机理）→ `concepts/`
-- 「**该选哪个 / 差多少**」（实测数据对比）→ `comparisons/`
-- 「**这个工具能干什么、怎么调**」→ `entities/`
-- 「**数据从哪来、怎么复现**」→ `raw/`
-
-> 一次分析常同时产出多种：如本次既写了概念页（机理）、又写了对比页（选型）、
-> 还补了 raw 快照（数据）——**按类型拆开放不同目录，不要全塞进一个页面**。
->
-> 图片等附件也有归属（`AGENTS.md` §8「附件本地化」）：下载到固定目录供引用。
 
 ## 关于本记忆库的性质（重要，勿误解）
 
@@ -107,7 +90,10 @@ E:\AIQuantEval\
 
 ## 📤 推送纪律（每次做完都要执行）
 
-**本库任何改动完成后，必须立即推送 GitHub**，不要攒着、不要留半成品。
+> **硬性规则**：在 `E:\AIQuantEval` 中做完任何改动，**必须立即用 `push_ai.bat`
+> 推送到 GitHub**。这不是可选项——**不推送 = 没做完**。
+
+**本仓库的推送命令**：
 
 ```bat
 E:\AIQuantEval\push_ai.bat
@@ -123,14 +109,18 @@ git push origin main
 
 **要点**：
 
-- 推送是**收尾动作**，不推送就等于没做完。
+- **凡是改了本目录下的任何文件**（记忆文件、脚本、文档、数据索引），
+  收尾时都要跑一次 `push_ai.bat`。
+- 推送是**收尾动作**，不要攒着、不要留半成品。
 - 改动落在两个库时**要各自推送**：
-  - 知识改动 → 跑 `E:\Document\Ethan'vault\aiVault\push_ai.bat`
-  - 进度改动 → 跑 `E:\AIQuantEval\push_ai.bat`
+  - 知识改动 → `E:\Document\Ethan'vault\aiVault\push_ai.bat`
+  - 进度改动 → `E:\AIQuantEval\push_ai.bat`
+  - 一次会话若同时动了两边，**两个脚本都要跑**。
 - `push_ai.bat` 结尾有 `pause`，**在自动化/非交互环境下会卡住**；
-  此时改用等效的三条 git 命令。
-- ⚠️ 本库的 `git add .` 会连带未跟踪文件（如 `.onnx`/图集等大文件）。
-  若出现这类文件，先补 `.gitignore`，别直接把大文件推上去。
+  此时改用等效的三条 git 命令（`git add . && git commit && git push origin main`）。
+- ⚠️ 本库的 `git add .` 会连带未跟踪文件。
+  **推送前先 `git status` 看一眼**；若出现大文件（模型 `.rknn`/`.onnx`、图集等），
+  先补 `.gitignore` 再推，别把大文件推上去。
 
 ## 自我检查（每次写入后）
 
