@@ -44,6 +44,10 @@ E:\AIQuantEval\
 
 ## 🔑 双库分工（重要，防止知识分叉）
 
+> 这套约定是**跨项目通用**的，完整论述已沉淀在 aiVault：
+> `E:\Document\Ethan'vault\aiVault\wiki\concepts\Dual_Store_Knowledge_vs_Project_Memory.md`
+> （本节是它在**本项目**的落地实例，通用原则以 aiVault 那页为准。）
+
 本机上有**两个独立的库**，职责必须分清：
 
 | 库 | 位置 | 存什么 | 不存什么 |
@@ -59,6 +63,39 @@ E:\AIQuantEval\
 3. aiVault 有自己的规则（`aiVault/AGENTS.md`）：改完必须更新其 INDEX/LOG 并跑
    `push_ai`。**本库的规则不能替代它**，往 aiVault 写入时以 `AGENTS.md` 为准。
 4. 本库与 aiVault **各自独立 git**，推送互不影响。
+
+### 📂 aiVault 内部该落哪个目录（内容按类型分流）
+
+写知识前先按下表选目录。**权威定义在 `aiVault/prompts/ingest.md` §4 的模板**，
+本表只是速查；冲突时以 ingest.md 为准。
+
+| 内容类型 | 落到 | 格式 | 模板 |
+| :--- | :--- | :--- | :--- |
+| 芯片 / 框架 / 工具（含可运行代码、编译命令） | `wiki/entities/` | `.qmd` | ingest.md §4.2 |
+| 原理 / 算法 / 机制（纯文字推导） | `wiki/concepts/` | `.md` | §4.3 |
+| **多方案实测对比**（精度/速度/体积数据表） | `wiki/comparisons/` | `.qmd` | §4.4 |
+| 领域全景 / 技术路线 / 专题 MOC | `wiki/overview/` | `.md` | §4.5 |
+| 原始来源快照（抓取物、**含本地实验记录**） | `raw/YYYYMMDD-来源/` | `.md` | §4.1 |
+| 全局索引 / 时间线日志 | `INDEX.md` / `LOG.md`（根目录） | 固定 | AGENTS.md §6 |
+
+**本项目的落点约定**（沿用已建页面）：
+
+- 量化机理与修复方案 → `wiki/concepts/YOLO_Head_Quantization_Collapse.md`
+- 量化策略选型对比 → `wiki/comparisons/RKNN_Quantization_Strategy_vs.qmd`
+- RKNN 工具链限制 → `wiki/entities/RKNN_Toolkit2.qmd`
+- 实验原始数据 → `raw/20261011-local/yolov8n_rknn_int8_collapse.md`
+
+**分流判据（易混）**：
+
+- 「**为什么**会这样」（机理）→ `concepts/`
+- 「**该选哪个 / 差多少**」（实测数据对比）→ `comparisons/`
+- 「**这个工具能干什么、怎么调**」→ `entities/`
+- 「**数据从哪来、怎么复现**」→ `raw/`
+
+> 一次分析常同时产出多种：如本次既写了概念页（机理）、又写了对比页（选型）、
+> 还补了 raw 快照（数据）——**按类型拆开放不同目录，不要全塞进一个页面**。
+>
+> 图片等附件也有归属（`AGENTS.md` §8「附件本地化」）：下载到固定目录供引用。
 
 ## 关于本记忆库的性质（重要，勿误解）
 
